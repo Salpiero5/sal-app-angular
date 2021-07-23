@@ -1,3 +1,58 @@
 <mat-card>
-  <h1> salaaam </h1>
+  <h1>Customers search</h1>
+
+  <form [formGroup]="form" #form1 (ngSubmit)="onSubmit()">
+
+    <mat-form-field>
+      <mat-label>First Name</mat-label>
+      <input #input1 matInput placeholder="Name" type="text" formControlName="firstName">
+    </mat-form-field>
+    <br>
+    <button mat-raised-button color="primary" type="submit"
+            (click)="getAllCustomers()"> search
+    </button>
+  </form>
+  <br> <br>
+
+  <input #box (keyup.enter)="getCustomerById(box.value)" type="number">
+  <br>
+  <button mat-raised-button color="primary" type="button" (click)="getCustomerById(box.value)">Search By Id</button>
+  <br> <br>
+
+  <table mat-table [dataSource]="customers" *ngIf="customers && advancedSearch" class="mat-elevation-z8">
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> Id</th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="firstName">
+      <th mat-header-cell *matHeaderCellDef> First Name</th>
+      <td mat-cell *matCellDef="let element"> {{element.firstName}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="lastName">
+      <th mat-header-cell *matHeaderCellDef> Last Name</th>
+      <td mat-cell *matCellDef="let element"> {{element.lastName}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef> Email</th>
+      <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="phone">
+      <th mat-header-cell *matHeaderCellDef> Phone</th>
+      <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+    <tr mat-row *matRowDef="let row; columns: columnsToDisplay"></tr>
+
+  </table>
+
+  <mat-card-content>
+    <span *ngIf="customer && !advancedSearch">
+      {{customer.id}} {{customer.firstName}} {{customer.lastName}} {{customer.phone}} {{customer.email}}
+    </span>
+  </mat-card-content>
 </mat-card>

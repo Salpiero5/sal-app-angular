@@ -1,0 +1,27 @@
+* {
+  font-family: Tahoma , sans-serif !important;
+  color: black;
+  font-size: medium !important;
+}
+
+.mat-card {
+  margin: 2%;
+  background: white;
+}
+
+.button {
+  position: center;
+}
+
+table {
+  width: 100%;
+}
+
+.mat-form-field {
+  color: black;
+}
+
+.mat-input-element {
+  color: black;
+}
+

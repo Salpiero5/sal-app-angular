@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
 import {MatCardModule} from '@angular/material/card';
+import {HttpClientModule} from '@angular/common/http';
 
 
 @NgModule({
@@ -9,8 +9,8 @@ import {MatCardModule} from '@angular/material/card';
     MatCardModule
   ],
   imports: [
-    CommonModule,
-    MatCardModule
+    MatCardModule,
+    HttpClientModule
   ]
 })
 export class MaterialModule {
